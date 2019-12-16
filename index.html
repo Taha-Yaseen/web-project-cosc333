@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>BuyBook: Online BookShop</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Add to cart model-->
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog white" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    How many items do u want to add
+                    <div class="def-number-input number-input safari_only">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus mb-4"></button>
+                        <input class="quantity" min="0" name="quantity" value="0" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus mb-4"></button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary add-c" data-dismiss="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Hidden Modal-->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="formContainer">
+                    <form id="form" class="text-center border border-light p-4">
+                        <div class="overlayed-card row">
+                            <div id="login-button" class="col pointer-cursor waves-effect waves-light" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
+                                <p class="h4-responsive">Login</p>
+                            </div>
+                            <div id="signup-button" class="col pointer-cursor waves-effect waves-light white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                <p class="h4-responsive"> Sign Up</p>
+                            </div>
+                        </div>
+                        <!-- Default form login -->
+                        <div id="loginFormAnimator">
+                            <!-- Email -->
+                            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+                            <!-- Password -->
+                            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <!-- Remember me -->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                        <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <!-- Forgot password -->
+                                    <a href="">Forgot password?</a>
+                                </div>
+                            </div>
+
+                            <!-- Sign in button -->
+                            <button class="btn blue-gradient btn-block my-4" type="submit">Sign in</button>
+
+                            <!-- Social login -->
+                            <p>or
+                                <ShowBigger style="color: #3668BB;">Sign In</ShowBigger> with:</p>
+
+                            <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                            <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                            <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                            <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+                        </div>
+                        <!-- /Default form login -->
+
+                        <!-- Default form register -->
+                        <div id="signUpFormAnimator">
+                            <div class="form-row mb-4">
+                                <div class="col">
+                                    <!-- First name -->
+                                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                                </div>
+                                <div class="col">
+                                    <!-- Last name -->
+                                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                                </div>
+                            </div>
+                            <!-- E-mail -->
+                            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                            <!-- Phone number -->
+                            <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-4" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                            <!-- Password -->
+                            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <small id="formTextHelper" class="form-text text-muted mb-4">At least 8 characters and 1 digit</small>
+
+                            <!-- Confirm Password -->
+                            <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <!-- Newsletter -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+                                <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+                            </div>
+                            <!-- Sign up button -->
+                            <button class="btn btn-info my-4 btn-block blue-gradient" type="submit">Sign Up</button>
+
+                            <div class="center-text">
+                                <!-- Social register -->
+                                <p>or
+                                    <ShowBigger style="color: #3668BB;">Sign Up</ShowBigger> with:</p>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                            </div>
+                            <hr>
+
+                            <!-- Terms of service -->
+                            <p>By clicking
+                                <em>Sign up</em> you agree to our
+                                <a href="" target="_blank">terms of service</a>
+                            </p>
+                        </div>
+                        <!-- /Default form register -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Hidden Modal-->
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar blue-gradient">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://st4.depositphotos.com/18695922/27834/v/1600/depositphotos_278342968-stock-illustration-3d-book-with-letter-bb.jpg" height="30" alt="mdb logo">
+            </a>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="#" target="_blank">Our Stores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="#" target="_blank">About Us</a>
+                    </li>
+                </ul>
+                <!-- Right -->
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/search.png "  height="40rem " width="30rem "> </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/cart.png "  height="40rem " width="30rem "> <span class=" mt-3 var-items" style="color: aliceblue; font-weight: bold;">0</span></a>
+                            </li>
+                    <li class="nav-item">
+                        <button type="button" id="loginButton" class="btn btn-outline-blue-gradient waves-effect waves-light" data-placement="bottom" title="Login" data-toggle="modal" data-target="#login-modal">Login</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Navbar -->
+    <!--Carousel Wrapper-->
+    <div id="carousel " class="carousel slide carousel-fade " data-ride="carousel ">
+        <!--Indicators-->
+        <ol class="carousel-indicators ">
+            <li data-target="#carousel " data-slide-to="2 "></li>
+            <li data-target="#carousel " data-slide-to="1 "></li>
+            <li data-target="#carousel " data-slide-to="0 " class="active "></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner " role="listbox ">
+            <div class="carousel-item active ">
+                <div class="view ">
+                    <img class="d-block img-fluid " src="img/carousel/carousel-1.jpg " alt="First slide ">
+                    <div class="mask rgba-black-strong "></div>
+                </div>
+                <div class="custom-carousel-caption ">
+                    <div class="custom-carousel-caption ">
+                        <div class="text-white text-center py-5 px-4 ">
+                            <div class="py-5 ">
+                                <!-- Content -->
+                                <div class="animated fadeInDown ">
+                                    <h2 class="card-title h2 my-4 py-2 ">Want To Start Reading Directly?</h2>
+                                </div>
+                                <div class="animated fadeInDown ">
+                                    <p class="mb-4 pb-2 px-md-5 mx-md-5 ">You can buy a soft copy of the book</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <!--Mask color-->
+                <div class="view ">
+                    <img class="d-block img-fluid " src="img/carousel/carousel-2.jpg " alt="Second slide ">
+                    <div class="mask rgba-black-strong "></div>
+                </div>
+                <div class="custom-carousel-caption ">
+                    <div class="text-white text-center py-5 px-4 ">
+                        <div class="py-5 ">
+                            <div class="animated fadeInDown ">
+                                <h2 class="card-title h2 my-4 py-2 ">Old School?</h2>
+                            </div>
+                            <div class="animated fadeInDown ">
+                                <p class="mb-4 pb-2 px-md-5 mx-md-5 ">You can buy a hard copy of the book</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <!--Mask color-->
+                <div class="view ">
+                    <img class="d-block img-fluid w-100 " src="img/carousel/carousel-3.jpg " alt="Third slide ">
+                    <div class="mask rgba-black-strong "></div>
+                </div>
+                <div class="custom-carousel-caption ">
+                    <div class="text-white text-center py-5 px-4 ">
+                        <div class="py-5 ">
+                            <!-- Content -->
+                            <div class="animated fadeInDown ">
+                                <h2 class="card-title h2 my-4 py-2 ">Our Library</h2>
+                            </div>
+                            <div class="animated fadeInDown ">
+                                <p class="mb-4 pb-2 px-md-5 mx-md-5 ">We have the biggest Library in the world with more that 50,000,000+ Books</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--/.Slides-->
+
+    </div>
+    <!--/.Carousel Wrapper-->
+
+
+
+    <div class="search-container ">
+        <div class="tag-chips waves-effect waves-light ">
+            <p>Romantic Comedy</p>
+            <i class="fas fa-times "></i>
+        </div>
+        <input class="col-3 " type="text " placeholder="Add Tag " />
+    </div>
+
+    <div>
+        <h1 style="margin-left: 1%; ">
+            Popular Books
+        </h1>
+    </div>
+
+
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-2" data-ride="carousel">
+
+        <!--Controls-->
+        <div class="controls-top ">
+            <a class="black-text cont-prev" href="#multi-item-example" data-slide="prev"><i class="fas fa-angle-left fa-3x pr-3"></i></a>
+            <a class="black-text cont-next" href="#multi-item-example" data-slide="next"><i class="fas fa-angle-right fa-3x pl-3"></i></a>
+        </div>
+        <!--/.Controls-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+
+            <!--First slide-->
+            <div class="carousel-item active">
+
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                            Add to cart
+                                          </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                                Add to cart
+                                              </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                            Add to cart
+                                          </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                                Add to cart
+                                              </button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/.First slide-->
+
+            <!--Second slide-->
+            <div class="carousel-item">
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                            Add to cart
+                                          </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                                Add to cart
+                                              </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                            Add to cart
+                                          </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                                Add to cart
+                                              </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Second slide-->
+
+            <!--Third slide-->
+            <div class="carousel-item">
+
+
+
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                            Add to cart
+                                          </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                                Add to cart
+                                              </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                            Add to cart
+                                          </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3  ">
+                    <div class="card ">
+
+                        <!-- Card image -->
+                        <div class="view overlay ">
+                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
+                            <a href="#! ">
+                                <div class="mask rgba-white-slight "></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <!-- Text -->
+                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <!-- Add to cart -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                                                Add to cart
+                                              </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!--/.Third slide-->
+
+        </div>
+        <!--/.Slides-->
+
+    </div>
+    <!--/.Carousel Wrapper-->
+
+    <!--Carousel Wrapper-->
+
+
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue-gradient pt-4">
+        <div class="container">
+            <!-- Footer Elements -->
+            <!-- Footer Links -->
+            <div class="container-fluid text-center text-md-left">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                        <!-- Content -->
+                        <h6 class="text-uppercase font-weight-bold">Buy Books</h6>
+                        <hr class="white accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                        <hr class="white accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <i class="fas fa-home mr-3"></i> Sidon, Wostani, Lebanon</p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i> info@buybooks.com</p>
+                        <p>
+                            <i class="fas fa-phone mr-3"></i> + 961 76 053 641</p>
+                        <p>
+                            <i class="fas fa-print mr-3"></i> + 961 07 727 010</p>
+
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                        <hr class="white accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <i class="fas fa-home mr-3"></i> Sidon, Wostani, Lebanon</p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i> info@buybooks.com</p>
+                        <p>
+                            <i class="fas fa-phone mr-3"></i> + 961 76 053 641</p>
+                        <p>
+                            <i class="fas fa-print mr-3"></i> + 961 07 727 010</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <hr id="footerSeparator" class="white">
+                <!-- Grid row -->
+                <div class="container">
+                    <!-- Grid row-->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-12 py-5">
+                            <div class="mb-5 flex-center">
+                                <!-- Facebook -->
+                                <a class="fb-ic">
+                                    <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x" data-toggle="tooltip" data-placement="bottom" title="Facebook"> </i>
+                                </a>
+                                <!-- Twitter -->
+                                <a class="tw-ic">
+                                    <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x" data-toggle="tooltip" data-placement="bottom" title="Twitter"> </i>
+                                </a>
+                                <!-- Google +-->
+                                <a class="gplus-ic">
+                                    <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x" data-toggle="tooltip" data-placement="bottom" title="Google+"> </i>
+                                </a>
+                                <!--Linkedin -->
+                                <a class="li-ic">
+                                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x" data-toggle="tooltip" data-placement="bottom" title="LinkedIn"> </i>
+                                </a>
+                                <!--Instagram-->
+                                <a class="ins-ic">
+                                    <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x" data-toggle="tooltip" data-placement="bottom" title="Instagram"> </i>
+                                </a>
+                                <!--Pinterest-->
+                                <a class="pin-ic">
+                                    <i class="fab fa-pinterest fa-lg white-text fa-2x" data-toggle="tooltip" data-placement="bottom" title="Pinterest"> </i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row-->
+                </div>
+            </div>
+            <!-- Footer Elements -->
+        </div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© Copyright 2019
+            <a href="https://mdbootstrap.com/education/bootstrap/" data-toggle="tooltip" data-placement="top" title="Go to BuyBooks.com"> - Buy Books. All rights reserved.</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+    <!-- Footer -->
+
+    <!-- Footer -->
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom js -->
+    <script type="text/javascript" src="js/javaScript.js"></script>
+    <script type="text/javascript" src="js/myJs.js"></script>
+</body>
+
+</html>
