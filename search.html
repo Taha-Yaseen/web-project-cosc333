@@ -111,28 +111,30 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div id="formContainer">
-                    <form id="form" class="text-center border border-light p-4">
-                        <div class="overlayed-card row">
-                            <div id="login-button" class="col pointer-cursor waves-effect waves-light" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
-                                <p class="h4-responsive">Login</p>
-                            </div>
-                            <div id="signup-button" class="col pointer-cursor waves-effect waves-light white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
-                                <p class="h4-responsive"> Sign Up</p>
-                            </div>
+                    <div class="overlayed-card row">
+                        <div id="login-button" class="col pointer-cursor waves-effect waves-light" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
+                            <p class="h4-responsive">Login</p>
                         </div>
-                        <!-- Default form login -->
-                        <div id="loginFormAnimator">
+                        <div id="signup-button" class="col pointer-cursor waves-effect waves-light white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                            <p class="h4-responsive"> Sign Up</p>
+                        </div>
+                    </div>
+                    <div id="loginFormAnimator">
+                        <form id="loginForm" class="text-center border border-light p-4 needs-validation" novalidate>
+                            <!-- Default form login -->
                             <!-- Email -->
-                            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-
+                            <input type="email" id="loginEmail" class="form-control" placeholder="E-mail" required>
+                            <div id="loginEmailValidationBox" class="invalid-feedback">
+                                Enter a valid email. Example: name@example.com
+                            </div>
                             <!-- Password -->
-                            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-
-                            <div class="d-flex justify-content-around">
+                            <input type="password" id="loginPassword" class="form-control mt-4" placeholder="Password" required>
+                            <div id="loginPasswordValidationBox" class="invalid-feedback">d</div>
+                            <div class="d-flex justify-content-around mt-4">
                                 <div>
                                     <!-- Remember me -->
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                        <input type="checkbox" class="custom-control-input">
                                         <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
                                     </div>
                                 </div>
@@ -153,34 +155,50 @@
                             <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
                             <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
                             <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-                        </div>
-                        <!-- /Default form login -->
 
-                        <!-- Default form register -->
-                        <div id="signUpFormAnimator">
-                            <div class="form-row mb-4">
+                            <!-- /Default form login -->
+                        </form>
+                    </div>
+                    <div id="signUpFormAnimator">
+                        <form id="signupForm" class="text-center border border-light p-4 needs-validation" novalidate>
+                            <!-- Default form register -->
+
+                            <div class="form-row">
                                 <div class="col">
                                     <!-- First name -->
-                                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                                    <input type="text" id="signupFirstName" class="form-control" placeholder="First name">
+                                    <div id="signupFirstNameValidationBox" class="invalid-feedback">
+                                        Enter this field.
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <!-- Last name -->
-                                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                                    <input type="text" id="signupLastName" class="form-control" placeholder="Last name">
+                                    <div id="signupLastNameValidationBox" class="invalid-feedback">
+                                        Enter this field.
+                                    </div>
                                 </div>
                             </div>
                             <!-- E-mail -->
-                            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                            <input type="email" id="signupEmail" class="form-control mt-4" placeholder="E-mail">
+                            <div id="signupEmailValidationBox" class="invalid-feedback">
+                                Enter a valid email. Example: name@example.com
+                            </div>
                             <!-- Phone number -->
-                            <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-4" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                            <input type="text" id="signupPhone" class="form-control mt-4" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                            <div id="signupPhoneValidationBox" class="invalid-feedback">
+                                Enter a valid phone Number.
+                            </div>
                             <!-- Password -->
-                            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                            <small id="formTextHelper" class="form-text text-muted mb-4">At least 8 characters and 1 digit</small>
-
+                            <input type="password" id="signupPassword" class="form-control mt-4" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <div id="signupPasswordValidationBox" class="invalid-feedback"></div>
+                            <small id="formTextHelper" class="form-text text-muted">At least 8 characters and 1 digit</small>
                             <!-- Confirm Password -->
-                            <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <input type="password" id="signupPasswordC" class="form-control mt-4" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <div id="signupPasswordCValidationBoxC" class="invalid-feedback"></div>
                             <!-- Newsletter -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+                            <div class="custom-control custom-checkbox mt-4">
+                                <input type="checkbox" class="custom-control-input">
                                 <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
                             </div>
                             <!-- Sign up button -->
@@ -203,9 +221,10 @@
                                 <em>Sign up</em> you agree to our
                                 <a href="" target="_blank">terms of service</a>
                             </p>
-                        </div>
-                        <!-- /Default form register -->
-                    </form>
+
+                            <!-- /Default form register -->
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -299,27 +318,7 @@
                     <button id="searchButton" class="blue-gradient waves-effect waves-light">Search</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <!-- Basic dropdown -->
-                    <button class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>
 
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                    <!-- Basic dropdown -->
-                </div>
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-4">
-
-                </div>
-            </div>
         </div>
     </div>
     <!-- /Search Bar -->
