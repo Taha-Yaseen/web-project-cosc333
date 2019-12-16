@@ -11,5 +11,10 @@ $(document).ready(function() {
 
         $(this).mdbRate();
     })
+    var total = 0;
+    $(".price").each(function() {
+        total = parseFloat(total) + parseFloat(($(this).html()))
+        $("#total").html(total)
+    })
 
 })
