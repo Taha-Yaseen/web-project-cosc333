@@ -227,6 +227,8 @@ $(document).ready(() => {
     loginForm.submit(() => {
         validatedBeforeL = true;
         validateLogin()
+        if ($(document).find((e) => e.hasClass('is-invalid') ? false : true))
+            location.reload(true) // should be a get function
     })
 
     loginFormElements.email.keydown(() => validatedBeforeL ? validateLogin() : null)
@@ -327,5 +329,7 @@ $(document).ready(() => {
     signupForm.submit(() => {
         validatedBeforeS = true
         validateSignup()
+        if ($(document).find((e) => e.hasClass('is-invalid') ? false : true))
+            location.reload(true) // should be a get function
     })
 })

@@ -116,6 +116,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div id="formContainer">
+                    <div class="overlayed-card row">
+                        <div id="login-button" class="col pointer-cursor waves-effect waves-light" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
+                            <p class="h4-responsive">Login</p>
+                        </div>
+                        <div id="signup-button" class="col pointer-cursor waves-effect waves-light white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                            <p class="h4-responsive"> Sign Up</p>
+                        </div>
+                    </div>
                     <form id="loginForm" class="text-center border border-light p-4 needs-validation" novalidate>
                         <!-- Default form login -->
                         <div id="loginFormAnimator">
@@ -154,6 +162,70 @@
                             <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
                         </div>
                         <!-- /Default form login -->
+                    </form>
+                    <form id="signupForm" class="text-center border border-light p-4 needs-validation" novalidate>
+                        <!-- Default form register -->
+                        <div id="signUpFormAnimator">
+                            <div class="form-row">
+                                <div class="col">
+                                    <!-- First name -->
+                                    <input type="text" id="signupFirstName" class="form-control" placeholder="First name">
+                                    <div id="signupFirstNameValidationBox" class="invalid-feedback">
+                                        Enter this field.
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- Last name -->
+                                    <input type="text" id="signupLastName" class="form-control" placeholder="Last name">
+                                    <div id="signupLastNameValidationBox" class="invalid-feedback">
+                                        Enter this field.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- E-mail -->
+                            <input type="email" id="signupEmail" class="form-control mt-4" placeholder="E-mail">
+                            <div id="signupEmailValidationBox" class="invalid-feedback">
+                                Enter a valid email. Example: name@example.com
+                            </div>
+                            <!-- Phone number -->
+                            <input type="text" id="signupPhone" class="form-control mt-4" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                            <div id="signupPhoneValidationBox" class="invalid-feedback">
+                                Enter a valid phone Number.
+                            </div>
+                            <!-- Password -->
+                            <input type="password" id="signupPassword" class="form-control mt-4" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <div id="signupPasswordValidationBox" class="invalid-feedback"></div>
+                            <small id="formTextHelper" class="form-text text-muted">At least 8 characters and 1 digit</small>
+                            <!-- Confirm Password -->
+                            <input type="password" id="signupPasswordC" class="form-control mt-4" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                            <div id="signupPasswordCValidationBoxC" class="invalid-feedback"></div>
+                            <!-- Newsletter -->
+                            <div class="custom-control custom-checkbox mt-4">
+                                <input type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+                            </div>
+                            <!-- Sign up button -->
+                            <button class="btn btn-info my-4 btn-block blue-gradient" type="submit">Sign Up</button>
+
+                            <div class="center-text">
+                                <!-- Social register -->
+                                <p>or
+                                    <ShowBigger style="color: #3668BB;">Sign Up</ShowBigger> with:</p>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                                <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                            </div>
+                            <hr>
+
+                            <!-- Terms of service -->
+                            <p>By clicking
+                                <em>Sign up</em> you agree to our
+                                <a href="" target="_blank">terms of service</a>
+                            </p>
+                        </div>
+                        <!-- /Default form register -->
                     </form>
                 </div>
             </div>
@@ -204,19 +276,11 @@
                 <ul class="navbar-nav ml-auto nav-flex-icons">
 
                     <li class="nav-item">
-<<<<<<< HEAD
-                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/search.png"  height="40rem" width="30rem"> </a>
+                        <a href="search.html" class="btn btn-outline-blue-gradient waves-effect waves-light pt-1 pb-1 pl-3 pr-3 mt-0 mb-0"><img src="img/search.png" height="30rem" width="30rem"> </a>
                     </li>
-                    <li class="nav-item">
 
-                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/cart.png"  height="40rem" width="30rem"> <span class=" mt-3 var-items" style="color: aliceblue; font-weight: bold;">0</span></a>
-=======
-                        <a type="button" href="search.html" class="btn btn-outline-blue-gradient waves-effect waves-light pt-1 pb-1 pl-3 pr-3 mt-0 mb-0"><img src="img/search.png " height="30rem " width="30rem "> </a>
-                    </li>
                     <li class="nav-item">
-
-                        <button type="button" data-toggle="modal" data-target="#modalCart" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/cart.png "  height="40rem " width="30rem "> <span class=" mt-3 var-items" style="color: aliceblue; font-weight: bold;">0</span></a>
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                        <button type="button" data-toggle="modal" data-target="#modalCart" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/cart.png"  height="40rem" width="30rem"> <span class=" mt-3 var-items" style="color: aliceblue; font-weight: bold;">0</span></a>
                             </li>
                     <li class="nav-item">
                         <button type="button" id="loginButton" class="btn btn-outline-blue-gradient waves-effect waves-light" data-placement="bottom" title="Login" data-toggle="modal" data-target="#login-modal">Login</button>
@@ -338,7 +402,7 @@
             <!--First slide-->
             <div class="carousel-item active">
 
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -357,12 +421,9 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -371,7 +432,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -390,12 +451,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                                 Add to cart
                                               </button>
 
@@ -403,7 +462,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -422,12 +481,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                             Add to cart
                                           </button>
 
@@ -435,7 +492,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -454,12 +511,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                                 Add to cart
                                               </button>
 
@@ -472,7 +527,7 @@
 
             <!--Second slide-->
             <div class="carousel-item">
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -491,12 +546,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                             Add to cart
                                           </button>
 
@@ -505,7 +558,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -524,12 +577,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                                 Add to cart
                                               </button>
 
@@ -537,7 +588,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -556,12 +607,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                             Add to cart
                                           </button>
 
@@ -569,7 +618,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -588,12 +637,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                                 Add to cart
                                               </button>
 
@@ -610,7 +657,7 @@
 
 
 
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -629,12 +676,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                             Add to cart
                                           </button>
 
@@ -643,7 +688,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -662,12 +707,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                                 Add to cart
                                               </button>
 
@@ -675,7 +718,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -694,12 +737,10 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                             Add to cart
                                           </button>
 
@@ -707,7 +748,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3 ">
+                <div class="col-md-3 mb-3">
                     <div class="card">
 
                         <!-- Card image -->
@@ -726,13 +767,11 @@
                             <!-- Text -->
                             <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-<<<<<<< HEAD
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
-=======
+                                
 
-                            <span class="rating-faces rateMe3"></span>
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
->>>>>>> 9f345920a90cf5ec7a72d9c08741f736431a07b1
+                                <span class="rating-faces rateMe3"></span>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal"> 
                                                 Add to cart
                                               </button>
 
