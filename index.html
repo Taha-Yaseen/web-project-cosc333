@@ -45,35 +45,27 @@
         </div>
     </div>
 
-
-
     <!-- Hidden Modal-->
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div id="formContainer">
-                    <form id="form" class="text-center border border-light p-4">
-                        <div class="overlayed-card row">
-                            <div id="login-button" class="col pointer-cursor waves-effect waves-light" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
-                                <p class="h4-responsive">Login</p>
-                            </div>
-                            <div id="signup-button" class="col pointer-cursor waves-effect waves-light white" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
-                                <p class="h4-responsive"> Sign Up</p>
-                            </div>
-                        </div>
+                    <form id="loginForm" class="text-center border border-light p-4 needs-validation" novalidate>
                         <!-- Default form login -->
                         <div id="loginFormAnimator">
                             <!-- Email -->
-                            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-
+                            <input type="email" id="loginEmail" class="form-control" placeholder="E-mail" required>
+                            <div id="loginEmailValidationBox" class="invalid-feedback">
+                                Enter a valid email. Example: name@example.com
+                            </div>
                             <!-- Password -->
-                            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-
-                            <div class="d-flex justify-content-around">
+                            <input type="password" id="loginPassword" class="form-control mt-4" placeholder="Password" required>
+                            <div id="loginPasswordValidationBox" class="invalid-feedback">d</div>
+                            <div class="d-flex justify-content-around mt-4">
                                 <div>
                                     <!-- Remember me -->
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                        <input type="checkbox" class="custom-control-input">
                                         <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
                                     </div>
                                 </div>
@@ -96,56 +88,6 @@
                             <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
                         </div>
                         <!-- /Default form login -->
-
-                        <!-- Default form register -->
-                        <div id="signUpFormAnimator">
-                            <div class="form-row mb-4">
-                                <div class="col">
-                                    <!-- First name -->
-                                    <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-                                </div>
-                                <div class="col">
-                                    <!-- Last name -->
-                                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
-                                </div>
-                            </div>
-                            <!-- E-mail -->
-                            <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
-                            <!-- Phone number -->
-                            <input type="text" id="defaultRegisterPhonePassword" class="form-control mb-4" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
-                            <!-- Password -->
-                            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                            <small id="formTextHelper" class="form-text text-muted mb-4">At least 8 characters and 1 digit</small>
-
-                            <!-- Confirm Password -->
-                            <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                            <!-- Newsletter -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
-                                <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
-                            </div>
-                            <!-- Sign up button -->
-                            <button class="btn btn-info my-4 btn-block blue-gradient" type="submit">Sign Up</button>
-
-                            <div class="center-text">
-                                <!-- Social register -->
-                                <p>or
-                                    <ShowBigger style="color: #3668BB;">Sign Up</ShowBigger> with:</p>
-                                <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-                                <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-                                <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                                <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
-                            </div>
-                            <hr>
-
-                            <!-- Terms of service -->
-                            <p>By clicking
-                                <em>Sign up</em> you agree to our
-                                <a href="" target="_blank">terms of service</a>
-                            </p>
-                        </div>
-                        <!-- /Default form register -->
                     </form>
                 </div>
             </div>
@@ -195,11 +137,11 @@
                 <ul class="navbar-nav ml-auto nav-flex-icons">
 
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/search.png "  height="40rem " width="30rem "> </a>
+                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/search.png"  height="40rem" width="30rem"> </a>
                     </li>
                     <li class="nav-item">
 
-                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/cart.png "  height="40rem " width="30rem "> <span class=" mt-3 var-items" style="color: aliceblue; font-weight: bold;">0</span></a>
+                        <button type="button" class="btn btn-outline-blue-gradient waves-effect waves-light pt-0 pb-0 pl-3 pr-3 mt-0 mb-0"><img src="img/cart.png"  height="40rem" width="30rem"> <span class=" mt-3 var-items" style="color: aliceblue; font-weight: bold;">0</span></a>
                             </li>
                     <li class="nav-item">
                         <button type="button" id="loginButton" class="btn btn-outline-blue-gradient waves-effect waves-light" data-placement="bottom" title="Login" data-toggle="modal" data-target="#login-modal">Login</button>
@@ -210,71 +152,71 @@
     </nav>
     <!-- /Navbar -->
     <!--Carousel Wrapper-->
-    <div id="carousel " class="carousel slide carousel-fade " data-ride="carousel ">
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
         <!--Indicators-->
-        <ol class="carousel-indicators ">
-            <li data-target="#carousel " data-slide-to="2 "></li>
-            <li data-target="#carousel " data-slide-to="1 "></li>
-            <li data-target="#carousel " data-slide-to="0 " class="active "></li>
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="2"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
         </ol>
         <!--/.Indicators-->
         <!--Slides-->
-        <div class="carousel-inner " role="listbox ">
-            <div class="carousel-item active ">
-                <div class="view ">
-                    <img class="d-block img-fluid " src="img/carousel/carousel-1.jpg " alt="First slide ">
-                    <div class="mask rgba-black-strong "></div>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="view">
+                    <img class="d-block img-fluid" src="img/carousel/carousel-1.jpg" alt="First slide">
+                    <div class="mask rgba-black-strong"></div>
                 </div>
-                <div class="custom-carousel-caption ">
-                    <div class="custom-carousel-caption ">
-                        <div class="text-white text-center py-5 px-4 ">
-                            <div class="py-5 ">
+                <div class="custom-carousel-caption">
+                    <div class="custom-carousel-caption">
+                        <div class="text-white text-center py-5 px-4">
+                            <div class="py-5">
                                 <!-- Content -->
-                                <div class="animated fadeInDown ">
-                                    <h2 class="card-title h2 my-4 py-2 ">Want To Start Reading Directly?</h2>
+                                <div class="animated fadeInDown">
+                                    <h2 class="card-title h2 my-4 py-2">Want To Start Reading Directly?</h2>
                                 </div>
-                                <div class="animated fadeInDown ">
-                                    <p class="mb-4 pb-2 px-md-5 mx-md-5 ">You can buy a soft copy of the book</p>
+                                <div class="animated fadeInDown">
+                                    <p class="mb-4 pb-2 px-md-5 mx-md-5">You can buy a soft copy of the book</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item ">
+            <div class="carousel-item">
                 <!--Mask color-->
-                <div class="view ">
-                    <img class="d-block img-fluid " src="img/carousel/carousel-2.jpg " alt="Second slide ">
-                    <div class="mask rgba-black-strong "></div>
+                <div class="view">
+                    <img class="d-block img-fluid" src="img/carousel/carousel-2.jpg" alt="Second slide">
+                    <div class="mask rgba-black-strong"></div>
                 </div>
-                <div class="custom-carousel-caption ">
-                    <div class="text-white text-center py-5 px-4 ">
-                        <div class="py-5 ">
-                            <div class="animated fadeInDown ">
-                                <h2 class="card-title h2 my-4 py-2 ">Old School?</h2>
+                <div class="custom-carousel-caption">
+                    <div class="text-white text-center py-5 px-4">
+                        <div class="py-5">
+                            <div class="animated fadeInDown">
+                                <h2 class="card-title h2 my-4 py-2">Old School?</h2>
                             </div>
-                            <div class="animated fadeInDown ">
-                                <p class="mb-4 pb-2 px-md-5 mx-md-5 ">You can buy a hard copy of the book</p>
+                            <div class="animated fadeInDown">
+                                <p class="mb-4 pb-2 px-md-5 mx-md-5">You can buy a hard copy of the book</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item ">
+            <div class="carousel-item">
                 <!--Mask color-->
-                <div class="view ">
-                    <img class="d-block img-fluid w-100 " src="img/carousel/carousel-3.jpg " alt="Third slide ">
-                    <div class="mask rgba-black-strong "></div>
+                <div class="view">
+                    <img class="d-block img-fluid w-100" src="img/carousel/carousel-3.jpg" alt="Third slide">
+                    <div class="mask rgba-black-strong"></div>
                 </div>
-                <div class="custom-carousel-caption ">
-                    <div class="text-white text-center py-5 px-4 ">
-                        <div class="py-5 ">
+                <div class="custom-carousel-caption">
+                    <div class="text-white text-center py-5 px-4">
+                        <div class="py-5">
                             <!-- Content -->
-                            <div class="animated fadeInDown ">
-                                <h2 class="card-title h2 my-4 py-2 ">Our Library</h2>
+                            <div class="animated fadeInDown">
+                                <h2 class="card-title h2 my-4 py-2">Our Library</h2>
                             </div>
-                            <div class="animated fadeInDown ">
-                                <p class="mb-4 pb-2 px-md-5 mx-md-5 ">We have the biggest Library in the world with more that 50,000,000+ Books</p>
+                            <div class="animated fadeInDown">
+                                <p class="mb-4 pb-2 px-md-5 mx-md-5">We have the biggest Library in the world with more that 50,000,000+ Books</p>
                             </div>
                         </div>
                     </div>
@@ -290,16 +232,16 @@
 
 
 
-    <div class="search-container ">
-        <div class="tag-chips waves-effect waves-light ">
+    <div class="search-container">
+        <div class="tag-chips waves-effect waves-light">
             <p>Romantic Comedy</p>
-            <i class="fas fa-times "></i>
+            <i class="fas fa-times"></i>
         </div>
-        <input class="col-3 " type="text " placeholder="Add Tag " />
+        <input class="col-3" type="text" placeholder="Add Tag" />
     </div>
 
     <div>
-        <h1 style="margin-left: 1%; ">
+        <h1 style="margin-left: 1%;">
             Popular Books
         </h1>
     </div>
@@ -309,7 +251,7 @@
     <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-2" data-ride="carousel">
 
         <!--Controls-->
-        <div class="controls-top ">
+        <div class="controls-top">
             <a class="black-text cont-prev" href="#multi-item-example" data-slide="prev"><i class="fas fa-angle-left fa-3x pr-3"></i></a>
             <a class="black-text cont-next" href="#multi-item-example" data-slide="next"><i class="fas fa-angle-right fa-3x pl-3"></i></a>
         </div>
@@ -321,26 +263,26 @@
             <!--First slide-->
             <div class="carousel-item active">
 
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -349,26 +291,26 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                                 Add to cart
                                               </button>
 
@@ -376,26 +318,26 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -403,26 +345,26 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                                 Add to cart
                                               </button>
 
@@ -435,26 +377,26 @@
 
             <!--Second slide-->
             <div class="carousel-item">
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -463,26 +405,26 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                                 Add to cart
                                               </button>
 
@@ -490,26 +432,26 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -517,26 +459,26 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                                 Add to cart
                                               </button>
 
@@ -553,26 +495,26 @@
 
 
 
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -581,26 +523,26 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                                 Add to cart
                                               </button>
 
@@ -608,26 +550,26 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                             Add to cart
                                           </button>
 
@@ -635,26 +577,26 @@
 
                     </div>
                 </div>
-                <div class="col-md-3 mb-3  ">
-                    <div class="card ">
+                <div class="col-md-3 mb-3 ">
+                    <div class="card">
 
                         <!-- Card image -->
-                        <div class="view overlay ">
-                            <img class="card-img-top " src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg " alt="Card image cap ">
-                            <a href="#! ">
-                                <div class="mask rgba-white-slight "></div>
+                        <div class="view overlay">
+                            <img class="card-img-top" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
 
                         <!-- Card content -->
-                        <div class="card-body ">
+                        <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title ">The Little Mermaid</h4>
+                            <h4 class="card-title">The Little Mermaid</h4>
                             <!-- Text -->
-                            <p class="card-text ">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the The Little Mermaid and make up the bulk of the card's content.</p>
                             <!-- Add to cart -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#AddModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">
                                                 Add to cart
                                               </button>
 
@@ -778,10 +720,6 @@
         <!-- Copyright -->
 
     </footer>
-
-    <!-- Footer -->
-
-    <!-- Footer -->
 
     <!-- SCRIPTS -->
 

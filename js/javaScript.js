@@ -121,9 +121,9 @@ $(document).ready(() => {
         }
     })
 
-    var readURL = function(input) {
+    function readURL(input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            let reader = new FileReader();
 
             reader.onload = function(e) {
                 $('.profile-pic').attr('src', e.target.result);
@@ -150,5 +150,182 @@ $(document).ready(() => {
         $("#loginFormAnimator").fadeOut(150, () => $("#signUpFormAnimator").fadeIn(150))
         $(this).removeClass("white")
         $("#login-button").addClass("white")
+    })
+
+    function numberOnly(str) {
+        return str.length && !/[^0-9]/gm.test(str)
+    }
+
+    function alphaOnly(str) {
+        return str.length && !/[^a-z]/gmi.test(str)
+    }
+
+    function alphanumeric(str) {
+        return /[a-z]+/i.test(str) && /[0-9]+/.test(str) && !/([^\w\s]|_| )/.test(str)
+    }
+
+    var loginFormElements = {
+        email: $('#loginEmail'),
+        emailValidationBox: $('#loginEmailValidationBox'),
+        password: $('#loginPassword'),
+        passwordValidationBox: $('#loginPasswordValidationBox')
+    }
+
+    var validatedBeforeL = false
+
+    function isValidEmailAddress(emailAddress) {
+        let pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i)
+        return pattern.test(emailAddress)
+    }
+
+    function isValidPassword(password, validationBox) {
+        if (password.length < 8) {
+            validationBox.html('At least 8 characters long')
+            return false
+        }
+        if (!alphanumeric(password)) {
+            validationBox.html('Must contain characters and numbers')
+            return false
+        }
+        return true
+    }
+
+    function validatePassword(password, validationBox) {
+        let valid = isValidPassword(password.val(), validationBox)
+        if (valid) {
+            password.addClass('is-valid')
+            password.removeClass('is-invalid')
+            validationBox.css('display', 'none')
+        } else {
+            password.addClass('is-invalid')
+            password.removeClass('is-valid')
+            validationBox.css('display', 'block')
+        }
+    }
+
+    function validateEmail(email, validationBox) {
+        if (isValidEmailAddress(email.val())) {
+            email.removeClass('is-invalid')
+            email.addClass('is-valid')
+            validationBox.css('display', 'none')
+        } else {
+            validationBox.html('Invalid email address. Example: name@example.com')
+            email.removeClass('is-valid')
+            email.addClass('is-invalid')
+            validationBox.css('display', 'block')
+        }
+    }
+
+    function validateLogin() {
+        if (!validatedBeforeL)
+            return true
+        validateEmail(loginFormElements.email, loginFormElements.emailValidationBox)
+        validatePassword(loginFormElements.password, loginFormElements.passwordValidationBox)
+    }
+
+    let loginForm = $('#loginForm')
+    loginForm.submit(() => {
+        validatedBeforeL = true;
+        validateLogin()
+    })
+
+    loginFormElements.email.keydown(() => validatedBeforeL ? validateLogin() : null)
+    loginFormElements.password.keydown(() => validatedBeforeL ? validateLogin() : null)
+
+    signupFormElements = {
+        email: $('#signupEmail'),
+        emailValidationBox: $('#signupEmailValidationBox'),
+        phone: $('#signupPhone'),
+        phoneValidationBox: $('#signupPhoneValidationBox'),
+        password: $('#signupPassword'),
+        passwordValidationBox: $('#signupPasswordValidationBox'),
+        passwordC: $('#signupPasswordC'),
+        passwordCValidationBox: $('#signupPasswordCValidationBox'),
+        firstName: $('#signupFirstName'),
+        firstNameValidationBox: $('#signupFirstNameValidationBox'),
+        lastName: $('#signupLastName'),
+        lastNameValidationBox: $('#signupLastNameValidationBox'),
+    }
+
+    validatedBeforeS = false
+
+    function validatePasswordS(password, confirmPassword, pValidationBox, pCValidationBox) {
+        let valid = isValidPassword(password.val(), pValidationBox)
+        if (valid) {
+            password.addClass('is-valid')
+            confirmPassword.addClass('is-valid')
+            password.removeClass('is-invalid')
+            confirmPassword.removeClass('is-invalid')
+            pValidationBox.css('display', 'none')
+            if (password.val() !== confirmPassword.val()) {
+                confirmPassword.addClass('is-invalid')
+                confirmPassword.removeClass('is-valid')
+                pCValidationBox.html('Passwords do not match')
+                pCValidationBox.css('display', 'block')
+            }
+        } else {
+            password.addClass('is-invalid')
+            confirmPassword.addClass('is-invalid')
+            password.removeClass('is-valid')
+            confirmPassword.removeClass('is-valid')
+            pValidationBox.css('display', 'block')
+        }
+    }
+
+    function validateName(firstName, lastName, fValidationBox, lValidationBox) {
+        console.log(alphaOnly(firstName.val()))
+        console.log(firstName.val())
+        if (alphaOnly(firstName.val())) {
+            firstName.addClass('is-valid')
+            firstName.removeClass('is-invalid')
+            fValidationBox.css('display', 'none')
+        } else {
+            firstName.removeClass('is-valid')
+            firstName.addClass('is-invalid')
+            fValidationBox.css('display', 'block')
+        }
+        if (alphaOnly(lastName.val())) {
+            lastName.addClass('is-valid')
+            lastName.removeClass('is-invalid')
+            lValidationBox.css('display', 'none')
+        } else {
+            lastName.removeClass('is-valid')
+            lastName.addClass('is-invalid')
+            lValidationBox.css('display', 'block')
+        }
+    }
+
+    function validatePhone(phone, validationBox) {
+        if (numberOnly(phone.val()) && phone.val().length > 6) {
+            phone.addClass('is-valid')
+            phone.removeClass('is-invalid')
+            validationBox.css('display', 'none')
+        } else {
+            phone.removeClass('is-valid')
+            phone.addClass('is-invalid')
+            validationBox.css('display', 'block')
+        }
+    }
+
+    function validateSignup() {
+        if (!validatedBeforeS)
+            return true
+        validateEmail(signupFormElements.email, signupFormElements.emailValidationBox)
+        validatePasswordS(signupFormElements.password, signupFormElements.passwordC, signupFormElements.passwordValidationBox, signupFormElements.passwordCValidationBox)
+        validatePhone(signupFormElements.phone, signupFormElements.phoneValidationBox)
+        validateName(signupFormElements.firstName, signupFormElements.lastName, signupFormElements.firstNameValidationBox, signupFormElements.lastNameValidationBox)
+    }
+
+    signupFormElements.email.keydown(() => validatedBeforeS ? validateSignup() : null)
+    signupFormElements.password.keydown(() => validatedBeforeS ? validateSignup() : null)
+    signupFormElements.phone.keydown(() => validatedBeforeS ? validateSignup() : null)
+    signupFormElements.passwordC.keydown(() => validatedBeforeS ? validateSignup() : null)
+    signupFormElements.firstName.keydown(() => validatedBeforeS ? validateSignup() : null)
+    signupFormElements.lastName.keydown(() => validatedBeforeS ? validateSignup() : null)
+
+    let signupForm = $('#signupForm')
+    signupForm.submit(() => {
+        validatedBeforeS = true
+        validateSignup()
     })
 })
